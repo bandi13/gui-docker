@@ -2,7 +2,7 @@
 Image with a VNC server on port 5900 and a webclient on port 5901 for containerized GUI applications
 
 Here is a screenshot:
-![Alt](https://github.com/bandi13/vnc-webclient/blob/master/screenshot.png "Example screenshot")
+![Alt](https://raw.githubusercontent.com/bandi13/vnc-webclient/master/screenshot.png "Example screenshot")
 
 This is based on Ubuntu 17.10 and installs x11vnc for the VNC server, and uses noVNC for the HTML5-based webclient. You can start the container with:
 
