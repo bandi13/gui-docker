@@ -5,9 +5,11 @@ OUR_IP=$(hostname -i)
 VNC_PASSWD=1234
 mkdir -p ~/.vnc && x11vnc -storepasswd $VNC_PASSWD ~/.vnc/passwd
 # -noxrecord is to solve a 'stack smashing' bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=859213
-x11vnc -forever -usepw -create -env FD_PROG=/opt/x11vnc_entrypoint.sh -noxrecord &
+x11vnc -shared -forever -usepw -create -env FD_PROG=/opt/x11vnc_entrypoint.sh -noxrecord &
 #start noVNC web server
 /opt/noVNC/utils/launch.sh --vnc localhost:5900 --listen 5901 &
+# Start up second server to allow shared sessions
+/opt/noVNC/utils/launch.sh --vnc localhost:5900 --listen 5902 &
 
 echo -e "\n\n------------------ VNC environment started ------------------"
 echo -e "\nVNCSERVER started on DISPLAY= $DISPLAY \n\t=> connect via VNC viewer with $OUR_IP:5900"

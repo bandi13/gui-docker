@@ -6,9 +6,11 @@ Here is a screenshot:
 
 This is based on Ubuntu 17.10 and installs x11vnc for the VNC server, and uses noVNC for the HTML5-based webclient. You can start the container with:
 
-`docker run --shm-size=256m -it -p 5900:5900 -p 5901:5901 bandi13/vnc-webclient`
+`docker run --shm-size=256m -it -p 5900:5900 -p 5901:5901 -p 5902:5902 bandi13/vnc-webclient`
 
 The shm-size argument is to make sure that the webclient does not run out of shared memory and crash.
+
+Port 5900 is exposing the VNC Server port. The port 5901 and 5902 are using the noVNC webclient. Both ports are connecting to the same server, and are just there to facilitate shared VNC sessions.
 
 Containers that build on this will be able to have scripts run inside the Fluxbox window manager. Any custom scripts can be placed in /opt/startup_scripts.
 

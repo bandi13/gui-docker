@@ -7,6 +7,8 @@ ENV DEBIAN_FRONTEND noninteractive
 EXPOSE 5900
 # for the browser VNC client
 EXPOSE 5901
+# for the browser VNC client (Shared session)
+EXPOSE 5902
 
 # Make sure the package repository is up to date
 RUN apt-get update
