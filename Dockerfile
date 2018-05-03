@@ -25,5 +25,8 @@ COPY x11vnc_entrypoint.sh /opt/x11vnc_entrypoint.sh
 # Subsequent images can put their scripts to run at startup here
 RUN mkdir /opt/startup_scripts
 
+# Initial fluxbox menu
+RUN mkdir -p /root/.fluxbox && echo "[begin] (fluxbox)\n[include] (/etc/X11/fluxbox/fluxbox-menu)\n[end]" > /root/.fluxbox/menu
+
 ENTRYPOINT ["/opt/container_startup.sh"]
 CMD "/bin/bash"
