@@ -20,4 +20,4 @@ You can change the default VNC password of '1234' by having the following line i
 
 Adding in additional menu items to the bottom is as easy as:
 
-`RUN sed -i '$ d' /root/.fluxbox/menu && echo "\t##Your Menu Item Here##\n[end]" >> /root/.fluxbox/menu`
+`RUN sed -i '$ d' /etc/X11/fluxbox/fluxbox-menu && echo "\t##Your Menu Item Here##\n[end]" >> /etc/X11/fluxbox/fluxbox-menu`
