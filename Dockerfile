@@ -9,6 +9,8 @@ EXPOSE 5900
 EXPOSE 5901
 # for the browser VNC client (Shared session)
 EXPOSE 5902
+# Use environment variable to allow custom VNC passwords
+ENV VNC_PASSWD=1234
 
 # Make sure the package repository is up to date
 RUN apt-get update
