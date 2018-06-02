@@ -15,11 +15,10 @@ echo -e "\nVNCSERVER started on DISPLAY= $DISPLAY \n\t=> connect via VNC viewer 
 echo -e "\nnoVNC HTML client started:\n\t=> connect via http://$OUR_IP:5901/?password=$VNC_PASSWD\n"
 
 if [ -z "$1" ]; then
-    echo -e "\n------------------ $HOME/.vnc/*$DISPLAY.log ------------------"
-    tail -f $HOME/.vnc/*$DISPLAY.log
+  tail -f /dev/null
 else
-    # unknown option ==> call command
-    echo -e "\n\n------------------ EXECUTE COMMAND ------------------"
-    echo "Executing command: '$@'"
-    exec "$@"
+  # unknown option ==> call command
+  echo -e "\n\n------------------ EXECUTE COMMAND ------------------"
+  echo "Executing command: '$@'"
+  exec "$@"
 fi
