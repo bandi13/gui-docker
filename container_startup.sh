@@ -7,8 +7,6 @@ mkdir -p $HOME/.vnc && x11vnc -storepasswd $VNC_PASSWD $HOME/.vnc/passwd
 x11vnc -rfbauth $HOME/.vnc/passwd -shared -forever -usepw -create -env FD_PROG=/opt/x11vnc_entrypoint.sh -noxrecord &
 #start noVNC web server
 /opt/noVNC/utils/launch.sh --listen 5901 &
-# Start up second server to allow shared sessions
-/opt/noVNC/utils/launch.sh --listen 5902 &
 
 echo -e "\n\n------------------ VNC environment started ------------------"
 echo -e "\nVNCSERVER started on DISPLAY= $DISPLAY \n\t=> connect via VNC viewer with $OUR_IP:5900"
