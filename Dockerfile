@@ -1,4 +1,4 @@
-FROM    ubuntu:17.10
+FROM    ubuntu:18.04
 
 # for the VNC connection
 EXPOSE 5900
@@ -7,8 +7,8 @@ EXPOSE 5901
 # Use environment variable to allow custom VNC passwords
 ENV VNC_PASSWD=1234
 
-# Make sure the package repository is up to date
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt install -y x11vnc xvfb fluxbox git net-tools python python-numpy
+# Make sure the dependencies are met
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt install -y x11vnc xvfb fluxbox git net-tools python python-numpy && rm -rf /var/lib/apt/lists/*
 
 # Install VNC. Requires net-tools, python and python-numpy
 RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC
