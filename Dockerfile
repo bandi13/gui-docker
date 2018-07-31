@@ -4,8 +4,6 @@ FROM    ubuntu:17.10
 EXPOSE 5900
 # for the browser VNC client
 EXPOSE 5901
-# for the browser VNC client (Shared session)
-EXPOSE 5902
 # Use environment variable to allow custom VNC passwords
 ENV VNC_PASSWD=1234
 
