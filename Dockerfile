@@ -11,8 +11,8 @@ ENV VNC_PASSWD=1234
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt install -y x11vnc xvfb fluxbox git net-tools python python-numpy && rm -rf /var/lib/apt/lists/*
 
 # Install VNC. Requires net-tools, python and python-numpy
-RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC
-RUN git clone https://github.com/novnc/websockify.git /opt/noVNC/utils/websockify
+RUN git clone --branch v1.0.0 --single-branch https://github.com/novnc/noVNC.git /opt/noVNC
+RUN git clone --branch v0.8.0 --single-branch https://github.com/novnc/websockify.git /opt/noVNC/utils/websockify
 RUN ln -s /opt/noVNC/vnc.html /opt/noVNC/index.html
 
 # Copy various files to their respective places
