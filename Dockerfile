@@ -21,7 +21,7 @@ COPY x11vnc_entrypoint.sh /opt/x11vnc_entrypoint.sh
 # Subsequent images can put their scripts to run at startup here
 RUN mkdir /opt/startup_scripts
 
-# Add in a separator to the bottom of the menu so further layers would be in a separate section
-RUN sed -i '$ d' /etc/X11/fluxbox/fluxbox-menu && echo "\t[separator]\n[end]" >> /etc/X11/fluxbox/fluxbox-menu
+# Add menu entries to the container
+RUN echo "?package(bash):needs=\"X11\" section=\"Silabs\" title=\"Xterm\" command=\"xterm -geometry 212x75 -ls -bg black -fg white\"" >> /usr/share/menu/custom-docker && update-menus
 
 ENTRYPOINT ["/opt/container_startup.sh"]

@@ -4,7 +4,7 @@ Image with a VNC server on port 5900 and a webclient on port 5901 for containeri
 Here is a screenshot:
 ![Alt](https://raw.githubusercontent.com/bandi13/vnc-webclient/master/screenshot.png "Example screenshot")
 
-This is based on Ubuntu 17.10 and installs x11vnc for the VNC server, and uses noVNC for the HTML5-based webclient. You can start the container with:
+This is based on Ubuntu 18.10 and installs x11vnc for the VNC server, and uses noVNC for the HTML5-based webclient. You can start the container with:
 
 `docker run --shm-size=256m -it -p 5900:5900 -p 5901:5901 -e VNC_PASSWD=1234 bandi13/vnc-webclient`
 
@@ -16,4 +16,7 @@ Containers that build on this will be able to have scripts run inside the Fluxbo
 
 Adding in additional menu items to the bottom is as easy as:
 
-`RUN sed -i '$ d' /etc/X11/fluxbox/fluxbox-menu && echo "\t##Your Menu Item Here##\n[end]" >> /etc/X11/fluxbox/fluxbox-menu`
+`RUN echo "?package(bash):needs=\"X11\" section=\"DockerCustom\" title=\"Xterm\" command=\"xterm -geometry 212x75 -ls -bg black -fg white\"" >> /usr/share/menu/custom-docker && update-menus`
+
+Or this for running shell scripts:
+`RUN echo "?package(bash):needs=\"text\" section=\"DockerCustom\" title=\"Some Script\" command=\"touch /tmp/file\"" >> /usr/share/menu/custom-docker && update-menus`
