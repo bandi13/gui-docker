@@ -22,6 +22,6 @@ COPY x11vnc_entrypoint.sh /opt/x11vnc_entrypoint.sh
 RUN mkdir /opt/startup_scripts
 
 # Add menu entries to the container
-RUN echo "?package(bash):needs=\"X11\" section=\"Silabs\" title=\"Xterm\" command=\"xterm -geometry 212x75 -ls -bg black -fg white\"" >> /usr/share/menu/custom-docker && update-menus
+RUN echo "?package(bash):needs=\"X11\" section=\"DockerCustom\" title=\"Xterm\" command=\"xterm -geometry 212x75 -ls -bg black -fg white\"" >> /usr/share/menu/custom-docker && update-menus
 
 ENTRYPOINT ["/opt/container_startup.sh"]
