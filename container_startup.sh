@@ -2,10 +2,8 @@
 OUR_IP=$(hostname -i)
 
 #start VNC server (Uses VNC_PASSWD Docker ENV variable)
-mkdir -p $HOME/.vnc && x11vnc -storepasswd $VNC_PASSWD $HOME/.vnc/passwd
-# -repeat is to allow autorepeat of keyboard strokes
-# -noxrecord is to solve a 'stack smashing' bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=859213
-x11vnc -rfbauth $HOME/.vnc/passwd -shared -forever -usepw -repeat -create -env FD_PROG=/opt/x11vnc_entrypoint.sh -noxrecord &
+mkdir -p $HOME/.vnc && echo "$VNC_PASSWD" | vncpasswd -f > $HOME/.vnc/passwd
+vncserver :0 -nolisten -rfbauth $HOME/.vnc/passwd -xstartup /opt/x11vnc_entrypoint.sh
 #start noVNC web server
 /opt/noVNC/utils/launch.sh --listen 5901 &
 
