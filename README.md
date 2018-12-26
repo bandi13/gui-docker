@@ -1,3 +1,7 @@
+[![Docker Stars](https://img.shields.io/docker/stars/bandi13/vnc-webclient.svg?style=flat-square)](https://hub.docker.com/r/bandi13/vnc-webclient/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/bandi13/vnc-webclient.svg?style=flat-square)](https://hub.docker.com/r/bandi13/vnc-webclient/)
+[![](https://images.microbadger.com/badges/image/bandi13/vnc-webclient.svg)](https://microbadger.com/images/bandi13/vnc-webclient "Get your own image badge on microbadger.com")
+
 # vnc-webclient
 Image with a VNC server on port 5900 and a webclient on port 5901 for containerized GUI applications
 
