@@ -1,23 +1,30 @@
-[![Docker Stars](https://img.shields.io/docker/stars/bandi13/vnc-webclient.svg?style=flat-square)](https://hub.docker.com/r/bandi13/vnc-webclient/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/bandi13/vnc-webclient.svg?style=flat-square)](https://hub.docker.com/r/bandi13/vnc-webclient/)
-[![](https://images.microbadger.com/badges/image/bandi13/vnc-webclient.svg)](https://microbadger.com/images/bandi13/vnc-webclient "Get your own image badge on microbadger.com")
+[![Docker Stars](https://img.shields.io/docker/stars/bandi13/gui-docker.svg?style=flat-square)](https://hub.docker.com/r/bandi13/gui-docker/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/bandi13/gui-docker.svg?style=flat-square)](https://hub.docker.com/r/bandi13/gui-docker/)
+[![](https://images.microbadger.com/badges/image/bandi13/gui-docker.svg)](https://microbadger.com/images/bandi13/gui-docker "Get your own image badge on microbadger.com")
 
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoff.ee/bandi13)
 
-# vnc-webclient
-Image with a VNC server on port 5900 and a webclient on port 5901 for containerized GUI applications
+# GUI Docker
+This is a container for running GUI applications completely inside a Docker container. You do not need to forward your running XAuth or allow Docker to draw onto your display. Nor do you need to use SSH to forward X11. This container exposes a VNC webclient to the host and therefore everything is contained within the container.
+
+The VNC server is on port 5900 and a webclient is on port 5901.
 
 Here is a screenshot:
-![Alt](https://raw.githubusercontent.com/bandi13/vnc-webclient/master/screenshot.png "Example screenshot")
+![Alt](https://raw.githubusercontent.com/bandi13/gui-docker/master/screenshot.png "Example screenshot")
 
+# To run
 This is based on Ubuntu 18.10 and installs TigerVNC for the VNC server, and uses noVNC for the HTML5-based webclient. You can start the container with:
 
-`docker run --shm-size=256m -it -p 5900:5900 -p 5901:5901 -e VNC_PASSWD=123456 bandi13/vnc-webclient`
+`docker run --shm-size=256m -it -p 5901:5901 -e VNC_PASSWD=123456 bandi13/gui-docker`
 
-The shm-size argument is to make sure that the webclient does not run out of shared memory and crash.
+The shm-size argument is to make sure that the webclient does not run out of shared memory and crash. You can change the default VNC password of '123456' on the docker run command to whatever you wish.
 
-Port 5900 is exposing the VNC Server port. The port 5901 is using the noVNC webclient. You can change the default VNC password of '123456' on the docker run command to whatever you wish.
+To use your own VNC client, you just need:
+`docker run --shm-size=256m -it -p 5900:5900 -e VNC_PASSWD=123456 bandi13/gui-docker`
 
+Where port 5900 is exposing the VNC Server port.
+
+# Customization
 Containers that build on this will be able to have scripts run inside the Fluxbox window manager. Any custom scripts can be placed in /opt/startup_scripts.
 
 Adding in additional menu items to the bottom is as easy as:
