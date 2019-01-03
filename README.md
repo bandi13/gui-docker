@@ -20,6 +20,7 @@ This is based on Ubuntu 18.10 and installs TigerVNC for the VNC server, and uses
 The shm-size argument is to make sure that the webclient does not run out of shared memory and crash. You can change the default VNC password of '123456' on the docker run command to whatever you wish.
 
 To use your own VNC client, you just need:
+
 `docker run --shm-size=256m -it -p 5900:5900 -e VNC_PASSWD=123456 bandi13/gui-docker`
 
 Where port 5900 is exposing the VNC Server port.
