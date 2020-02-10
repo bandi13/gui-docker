@@ -3,7 +3,7 @@ OUR_IP=$(hostname -i)
 
 # start VNC server (Uses VNC_PASSWD Docker ENV variable)
 mkdir -p $HOME/.vnc && echo "$VNC_PASSWD" | vncpasswd -f > $HOME/.vnc/passwd
-vncserver :0 -nolisten -rfbauth $HOME/.vnc/passwd -xstartup /opt/x11vnc_entrypoint.sh
+vncserver :0 -localhost no -nolisten -rfbauth $HOME/.vnc/passwd -xstartup /opt/x11vnc_entrypoint.sh
 # start noVNC web server
 /opt/noVNC/utils/launch.sh --listen 5901 &
 
