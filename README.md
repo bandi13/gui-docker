@@ -35,3 +35,10 @@ Adding in additional menu items to the bottom is as easy as:
 Or this for running shell scripts:
 
 `RUN echo "?package(bash):needs=\"text\" section=\"DockerCustom\" title=\"Some Script\" command=\"touch /tmp/file\"" >> /usr/share/menu/custom-docker && update-menus`
+
+# Screenshots
+You can have a screenshot of the container by doing the following on the host:
+
+ docker exec -e DISPLAY=:0.0 -w /tmp $CONTAINER scrot -z -t 20 -e 'cat $m && rm $f $m' > screenshot.png
+
+This will take a screenshot in the containerID=$CONTAINER and output it to 'screenshot.png' on the host.

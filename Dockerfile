@@ -8,7 +8,7 @@ EXPOSE 5901
 ENV VNC_PASSWD=123456
 
 # Make sure the dependencies are met
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt install -y tigervnc-standalone-server fluxbox xterm git net-tools python python-numpy && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt install -y tigervnc-standalone-server fluxbox xterm git net-tools python python-numpy scrot && rm -rf /var/lib/apt/lists/*
 
 # Install VNC. Requires net-tools, python and python-numpy
 RUN git clone --branch v1.0.0 --single-branch https://github.com/novnc/noVNC.git /opt/noVNC
