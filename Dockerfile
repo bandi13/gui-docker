@@ -21,6 +21,7 @@ RUN ln -s /opt/noVNC/vnc.html /opt/noVNC/index.html
 # Copy various files to their respective places
 COPY container_startup.sh /opt/container_startup.sh
 COPY x11vnc_entrypoint.sh /opt/x11vnc_entrypoint.sh
+HEALTHCHECK --start-period=10s CMD bash -c "if [ \"`pidof -x Xtigervnc | wc -l`\" == "1" ]; then exit 0; else exit 1; fi"
 # Subsequent images can put their scripts to run at startup here
 RUN mkdir /opt/startup_scripts
 
