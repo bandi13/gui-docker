@@ -14,8 +14,8 @@ ENV APT_INSTALL_POST="&& apt clean -y && rm -rf /var/lib/apt/lists/*"
 RUN eval ${APT_INSTALL_PRE} tigervnc-standalone-server tigervnc-common fluxbox eterm xterm git net-tools python python-numpy ca-certificates scrot ${APT_INSTALL_POST}
 
 # Install VNC. Requires net-tools, python and python-numpy
-RUN git clone --branch v1.0.0 --single-branch https://github.com/novnc/noVNC.git /opt/noVNC
-RUN git clone --branch v0.8.0 --single-branch https://github.com/novnc/websockify.git /opt/noVNC/utils/websockify
+RUN git clone --branch v1.2.0 --single-branch https://github.com/novnc/noVNC.git /opt/noVNC
+RUN git clone --branch v0.9.0 --single-branch https://github.com/novnc/websockify.git /opt/noVNC/utils/websockify
 RUN ln -s /opt/noVNC/vnc.html /opt/noVNC/index.html
 
 # Copy various files to their respective places
