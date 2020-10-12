@@ -17,5 +17,5 @@ else
   # unknown option ==> call command
   echo -e "\n\n------------------ EXECUTE COMMAND ------------------"
   echo "Executing command: '$@'"
-  exec "$@"
+  exec $@
 fi
