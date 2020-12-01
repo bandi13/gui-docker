@@ -18,14 +18,22 @@ RUN git clone --branch v1.2.0 --single-branch https://github.com/novnc/noVNC.git
 RUN git clone --branch v0.9.0 --single-branch https://github.com/novnc/websockify.git /opt/noVNC/utils/websockify
 RUN ln -s /opt/noVNC/vnc.html /opt/noVNC/index.html
 
-# Copy various files to their respective places
-COPY container_startup.sh /opt/container_startup.sh
-COPY x11vnc_entrypoint.sh /opt/x11vnc_entrypoint.sh
-HEALTHCHECK --start-period=10s CMD bash -c "if [ \"`pidof -x Xtigervnc | wc -l`\" == "1" ]; then exit 0; else exit 1; fi"
-# Subsequent images can put their scripts to run at startup here
-RUN mkdir /opt/startup_scripts
-
 # Add menu entries to the container
 RUN echo "?package(bash):needs=\"X11\" section=\"DockerCustom\" title=\"Xterm\" command=\"xterm -ls -bg black -fg white\"" >> /usr/share/menu/custom-docker && update-menus
+
+HEALTHCHECK --start-period=10s CMD bash -c "if [ \"`pidof -x Xtigervnc | wc -l`\" == "1" ]; then exit 0; else exit 1; fi"
+
+# Add in non-root user
+ENV UID_OF_DOCKERUSER 1000
+RUN useradd -m -s /bin/bash -g users -u ${UID_OF_DOCKERUSER} dockerUser
+RUN chown -R dockerUser:users /home/dockerUser && chown dockerUser:users /opt
+
+USER dockerUser
+
+# Copy various files to their respective places
+COPY --chown=dockerUser:users container_startup.sh /opt/container_startup.sh
+COPY --chown=dockerUser:users x11vnc_entrypoint.sh /opt/x11vnc_entrypoint.sh
+# Subsequent images can put their scripts to run at startup here
+RUN mkdir /opt/startup_scripts
 
 ENTRYPOINT ["/opt/container_startup.sh"]
