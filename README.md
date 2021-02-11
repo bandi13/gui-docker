@@ -1,6 +1,7 @@
 [![Docker Stars](https://img.shields.io/docker/stars/bandi13/gui-docker.svg?style=flat-square)](https://hub.docker.com/r/bandi13/gui-docker/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/bandi13/gui-docker.svg?style=flat-square)](https://hub.docker.com/r/bandi13/gui-docker/)
 [![](https://images.microbadger.com/badges/image/bandi13/gui-docker.svg)](https://microbadger.com/images/bandi13/gui-docker "Get your own image badge on microbadger.com")
+![Multi-Arch Docker](https://github.com/bandi13/gui-docker/workflows/Multi-Arch%20Docker/badge.svg)
 
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoff.ee/bandi13)
 
@@ -13,7 +14,9 @@ Here is a screenshot:
 ![Alt](https://raw.githubusercontent.com/bandi13/gui-docker/master/screenshot.png "Example screenshot")
 
 # To run
-This is based on Ubuntu 18.10 and installs TigerVNC for the VNC server, and uses noVNC for the HTML5-based webclient. You can start the container with:
+This is based on Ubuntu 18.10 and installs TigerVNC for the VNC server, and uses noVNC for the HTML5-based webclient. This gets created as a multi-arch container which will run on ARMv7, ARM64 and of course x86_64.
+
+You can start the container with:
 
 `docker run --shm-size=256m -it -p 5901:5901 -e VNC_PASSWD=123456 bandi13/gui-docker`
 
