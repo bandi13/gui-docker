@@ -11,14 +11,14 @@ ENV VNC_PASSWD=123456
 
 # Make sure the dependencies are met
 RUN apt update -y
-RUN apt install -y tigervnc-standalone-server tigervnc-common fluxbox eterm xterm git net-tools python3 python3-numpy ca-certificates scrot software-properties-common
+RUN apt install -y tigervnc-standalone-server tigervnc-common fluxbox eterm xterm git net-tools python python-numpy ca-certificates scrot software-properties-common
 RUN add-apt-repository ppa:obsproject/obs-studio && apt update
 RUN apt install -y obs-studio
 RUN apt clean -y
 
 # Install VNC. Requires net-tools, python and python-numpy
-RUN git clone --branch v1.3.0 --single-branch https://github.com/novnc/noVNC.git /opt/noVNC
-RUN git clone --branch v0.10.0 --single-branch https://github.com/novnc/websockify.git /opt/noVNC/utils/websockify
+RUN git clone --branch v1.2.0 --single-branch https://github.com/novnc/noVNC.git /opt/noVNC
+RUN git clone --branch v0.9.0 --single-branch https://github.com/novnc/websockify.git /opt/noVNC/utils/websockify
 RUN ln -s /opt/noVNC/vnc.html /opt/noVNC/index.html
 
 # Add menu entries to the container
