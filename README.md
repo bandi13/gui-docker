@@ -1,9 +1,4 @@
-[![Docker Stars](https://img.shields.io/docker/stars/bandi13/gui-docker.svg?style=flat-square)](https://hub.docker.com/r/bandi13/gui-docker/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/bandi13/gui-docker.svg?style=flat-square)](https://hub.docker.com/r/bandi13/gui-docker/)
-[![](https://images.microbadger.com/badges/image/bandi13/gui-docker.svg)](https://microbadger.com/images/bandi13/gui-docker "Get your own image badge on microbadger.com")
-![Multi-Arch Docker](https://github.com/bandi13/gui-docker/workflows/Multi-Arch%20Docker/badge.svg)
-
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoff.ee/bandi13)
+[![Buy The Original Dev A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoff.ee/bandi13)
 
 # GUI Docker
 This is a container for running GUI applications completely inside a Docker container. You do not need to forward your running XAuth or allow Docker to draw onto your display. Nor do you need to use SSH to forward X11. This container exposes a VNC webclient to the host and therefore everything is contained within the container.
