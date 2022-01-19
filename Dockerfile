@@ -11,7 +11,7 @@ ENV VNC_PASSWD=123456
 
 # Make sure the dependencies are met
 RUN apt update -y
-RUN apt install -y tigervnc-standalone-server tigervnc-common fluxbox eterm xterm git net-tools python python-numpy ca-certificates scrot software-properties-common
+RUN apt install -y tigervnc-standalone-server tigervnc-common fluxbox eterm xterm git net-tools python3 python3-numpy ca-certificates scrot software-properties-common
 RUN add-apt-repository ppa:obsproject/obs-studio && apt update
 RUN apt install -y obs-studio
 RUN apt clean -y
