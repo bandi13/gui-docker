@@ -14,7 +14,7 @@ Here is a screenshot:
 ![Alt](https://raw.githubusercontent.com/bandi13/gui-docker/master/screenshot.png "Example screenshot")
 
 # To run
-This is based on Ubuntu 20.04 and installs TigerVNC for the VNC server, and uses noVNC for the HTML5-based webclient. This gets created as a multi-arch container which will run on ARMv7, ARM64 and of course x86_64.
+This is based on Ubuntu 22.04 and installs TigerVNC for the VNC server, and uses noVNC for the HTML5-based webclient. This gets created as a multi-arch container which will run on ARMv7, ARM64 and of course x86_64.
 
 You can start the container with:
 

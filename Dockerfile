@@ -1,4 +1,4 @@
-FROM    ubuntu:20.04
+FROM    ubuntu:22.04
 
 # for the VNC connection
 EXPOSE 5900
@@ -11,11 +11,11 @@ ENV VNC_PASSWD=123456
 ENV APT_INSTALL_PRE="apt -o Acquire::ForceIPv4=true update && DEBIAN_FRONTEND=noninteractive apt -o Acquire::ForceIPv4=true install -y --no-install-recommends"
 ENV APT_INSTALL_POST="&& apt clean -y && rm -rf /var/lib/apt/lists/*"
 # Make sure the dependencies are met
-RUN eval ${APT_INSTALL_PRE} tigervnc-standalone-server tigervnc-common fluxbox eterm xterm git net-tools python python-numpy ca-certificates scrot ${APT_INSTALL_POST}
+RUN eval ${APT_INSTALL_PRE} tigervnc-standalone-server tigervnc-common tigervnc-tools fluxbox eterm xterm git net-tools python3 python3-numpy ca-certificates scrot ${APT_INSTALL_POST}
 
 # Install VNC. Requires net-tools, python and python-numpy
-RUN git clone --branch v1.2.0 --single-branch https://github.com/novnc/noVNC.git /opt/noVNC
-RUN git clone --branch v0.9.0 --single-branch https://github.com/novnc/websockify.git /opt/noVNC/utils/websockify
+RUN git clone --branch v1.4.0 --single-branch https://github.com/novnc/noVNC.git /opt/noVNC
+RUN git clone --branch v0.11.0 --single-branch https://github.com/novnc/websockify.git /opt/noVNC/utils/websockify
 RUN ln -s /opt/noVNC/vnc.html /opt/noVNC/index.html
 
 # Add menu entries to the container
