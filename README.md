@@ -39,6 +39,8 @@ Or this for running shell scripts:
 
 `RUN echo "?package(bash):needs=\"text\" section=\"DockerCustom\" title=\"Some Script\" command=\"touch /tmp/file\"" >> /usr/share/menu/custom-docker && update-menus`
 
+An example for having Firefox installed can be found in Dockerfile.firefox. Check the 'build.sh' to see how to build it.
+
 # Screenshots
 You can have a screenshot of the container by doing the following on the host:
 
