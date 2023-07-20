@@ -1,4 +1,4 @@
-FROM    ubuntu:18.04
+FROM    ubuntu:20.04
 
 # for the VNC connection
 EXPOSE 5900
