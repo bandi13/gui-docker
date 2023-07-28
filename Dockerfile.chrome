@@ -1,0 +1,9 @@
+FROM bandi13/gui-docker
+
+USER root
+
+RUN eval ${APT_INSTALL_PRE} wget ${APT_INSTALL_POST}
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb && eval ${APT_INSTALL_PRE} /tmp/chrome.deb ${APT_INSTALL_POST} && rm /tmp/chrome.deb
+RUN echo "?package(bash):needs=\"X11\" section=\"DockerCustom\" title=\"Google Chrome\" command=\"google-chrome --no-sandbox\"" >> /usr/share/menu/custom-docker && update-menus
+
+USER dockerUser
