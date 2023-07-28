@@ -2,6 +2,9 @@ FROM bandi13/gui-docker
 
 USER root
 
+RUN eval ${APT_INSTALL_PRE} --fix-missing software-properties-common gpg-agent ${APT_INSTALL_POST}
+RUN add-apt-repository -y ppa:mozillateam/ppa
+RUN echo "Package: firefox*\nPin: release o=LP-PPA-mozillateam\nPin-Priority: 501" >> /etc/apt/preferences.d/mozillateamppa
 RUN eval ${APT_INSTALL_PRE} firefox ${APT_INSTALL_POST}
 RUN echo "?package(bash):needs=\"X11\" section=\"DockerCustom\" title=\"Firefox\" command=\"firefox\"" >> /usr/share/menu/custom-docker && update-menus
 
