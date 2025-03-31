@@ -28,6 +28,9 @@ To use your own VNC client, you just need:
 
 Where port 5900 is exposing the VNC Server port.
 
+## Sound
+To enable sound, you'll need to add `-v /run/user/$UID/pulse/native:/run/user/$UID/pulse/native --env PULSE_SERVER=unix:/run/user/$UID/pulse/native --user $(id -u)` to your argument list. This will expose the Pulse Audio server from your host to the container.
+
 # Customization
 Containers that build on this will be able to have scripts run inside the Fluxbox window manager. Any custom scripts can be placed in /opt/startup_scripts.
 
